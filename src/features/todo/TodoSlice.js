@@ -20,6 +20,13 @@ const TodoSlice =  createSlice({
                 state.todos = state.todos.filter(todo => 
                     todo.id !== action.payload
                 )
+            },
+            updateTodo : (state, action) => {
+                const {id, text} = action.payload;
+                const found = state.find(item => item.id == id);
+                if(found){
+                    found.text = text;
+                }
             }
           }
  

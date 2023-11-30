@@ -6,21 +6,25 @@ export const Todos = () =>{
     const dispatch = useDispatch();
     console.log(todos);
     return(
-        <>
-           <ul className="list-none flex direction-column">
+        <div className="w-full">
+           <ul className="mx-auto w-2/3">
             {
                 todos.map(item => (
-                    <li key={item.id} className="w-2/3 flex justify-between px-4 py-2  bg-gray-400 my-4">
+                    <li key={item.id} className="w-full flex justify-between border-b-2 border-black px-4 py-2 my-4">                    
                         <div>{item.text}</div>
-                        {/* <div>{item.completed}</div> */}
-                        <button 
-                        className="border rounded px-2 py-0.5 bg-gray-400 hover:bg-gray-500" 
-                        onClick={()=> dispatch(removeTodo(item.id))}
-                        >Delete</button>                
+                        <div>
+                            <button 
+                                className="border rounded px-4 py-0.5 bg-blue-400 hover:bg-blue-900" 
+                            >Edit</button>
+                            <button 
+                                className="border rounded px-2 py-0.5 bg-red-600 hover:bg-gray-500" 
+                                onClick={()=> dispatch(removeTodo(item.id))}
+                            >Delete</button>  
+                        </div>              
                     </li>
                 ))
             }
             </ul>
-        </>
+        </div>
     )
 }

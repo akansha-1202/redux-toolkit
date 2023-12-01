@@ -1,6 +1,6 @@
 import React from "react"
 import {useSelector, useDispatch} from "react-redux";
-import {removeTodo} from "../features/todo/TodoSlice"
+import {removeTodo, toggleComplete} from "../features/todo/TodoSlice"
 import { Link } from 'react-router-dom';
 
 export const Todos = () =>{
@@ -13,8 +13,20 @@ export const Todos = () =>{
             {
                 todos.map((item,index) => (
                     <li key={item.id} className="w-full flex justify-between border-b-2 border-black px-4 py-2 my-4">                    
-                        <div>{index + 1}. {item.text}</div>
+                        <div className="flex">
+                            <span>{index + 1}.</span>
+                            <div style={{ textDecoration : item.completed ? 'line-through' : 'none' }}>
+                                {item.text}
+                            </div>
+                        </div>
                         <div>
+                            <button
+                                onClick={() => dispatch(toggleComplete({ id: item.id }))}            
+                                >
+                                {/* {item.completed ? 'Incomplete' : 'Complete'} */}
+                                <i class="fa-solid fa-check"></i>
+
+                            </button>
                             <Link to={`/edit/${item.id}`}>
                                 <button 
                                     className="border rounded px-4 py-0.5 bg-blue-400 hover:bg-blue-900" 

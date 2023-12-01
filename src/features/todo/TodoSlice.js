@@ -22,17 +22,25 @@ const TodoSlice =  createSlice({
                     todo.id !== action.payload
                 )
             },
-            updateTodo : (state, action) => {
+            editTodo : (state, action) => {
                 console.log(action.payload);
                 const { id, text} = action.payload;
                 const todoToUpdate = state.todos.find((todo) => todo.id == id);
-                   console.log(todoToUpdate);
                 if (todoToUpdate) {
                   todoToUpdate.text = text;
-                }            }
+                }          
+            },
+            toggleComplete: (state, action) => {
+                const { id } = action.payload;
+                const todoToToggle = state.todos.find((todo) => todo.id === id);
+          
+                if (todoToToggle) {
+                  todoToToggle.completed = !todoToToggle.completed;
+                }
+              },
           }
  
 })
 
-export const {addTodo, removeTodo, updateTodo} = TodoSlice.actions;
+export const {addTodo, removeTodo, updateTodo, toggleComplete} = TodoSlice.actions;
 export default TodoSlice.reducer;

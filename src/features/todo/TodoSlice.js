@@ -23,11 +23,12 @@ const TodoSlice =  createSlice({
                 )
             },
             updateTodo : (state, action) => {
-                const { id, newText } = action.payload;
-                const todoToUpdate = state.todos.find((todo) => todo.id === id);
-          
+                console.log(action.payload);
+                const { id, text} = action.payload;
+                const todoToUpdate = state.todos.find((todo) => todo.id == id);
+                   console.log(todoToUpdate);
                 if (todoToUpdate) {
-                  todoToUpdate.text = newText;
+                  todoToUpdate.text = text;
                 }            }
           }
  

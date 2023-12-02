@@ -1,15 +1,16 @@
 import React, {useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { addTodo } from "../features/todo/TodoSlice";
 
 
 function AddTodo() {
     const [input, setInput] = useState('');
     const dispatch = useDispatch();
-    const todos = useSelector(state => state.todoReducer.todos);
+    // const todos = useSelector(state => state.todoReducer.todos);
     const addToHandler = (e) =>{
         e.preventDefault();
-        dispatch(addTodo({id:todos[todos.length - 1].id + 1, text : input}));
+        // dispatch(addTodo({id:todos[todos.length - 1].id + 1, text : input}));
+        dispatch(addTodo(input));
         setInput('');
     }
     return(

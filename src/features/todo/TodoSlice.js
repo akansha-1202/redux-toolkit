@@ -1,21 +1,21 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, nanoid} from "@reduxjs/toolkit";
 const TodoSlice =  createSlice({
           name : "todos",
           initialState : {
           todos : [
-              {id : 1, text : "Movie", completed : false},
-              {id : 2, text : "Gym", completed : true},
-              {id : 3, text : "Breakfast", completed : true},             
+              {id : '1', text : "Movie", completed : false},
+              {id : '2', text : "Gym", completed : true},
+              {id : '3', text : "Breakfast", completed : true},             
           ]
           },
           reducers : {
             addTodo : (state, action) => {
                 console.log(action);
-                // const todo = {
-                //     id : nanoid(),
-                //     text : action.payload,
-                // }
-                state.todos.push(action.payload)
+                const todo = {
+                    id : nanoid(),
+                    text : action.payload,
+                }
+                state.todos.push(todo);
             },
             removeTodo : (state, action) => {
                 state.todos = state.todos.filter(todo => 
@@ -25,7 +25,7 @@ const TodoSlice =  createSlice({
             updateTodo : (state, action) => {
                 console.log(action.payload);
                 const { id, text} = action.payload;
-                const todoToUpdate = state.todos.find((todo) => todo.id == id);
+                const todoToUpdate = state.todos.find((todo) => todo.id === id);
                 if (todoToUpdate) {
                   todoToUpdate.text = text;
                 }          

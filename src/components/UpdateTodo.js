@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 const UpdateTodo = () => {
     const {id} = useParams();
     const todos = useSelector(state => state.todoReducer.todos);
-    const existingTask = todos.filter(f => f.id == id);
+    const existingTask = todos.filter(f => f.id === id);
     const {text} = existingTask[0];
     const [input, setInput] = useState(text);
     const dispatch = useDispatch();

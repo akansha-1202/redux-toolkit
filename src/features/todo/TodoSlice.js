@@ -22,7 +22,7 @@ const TodoSlice =  createSlice({
                     todo.id !== action.payload
                 )
             },
-            editTodo : (state, action) => {
+            updateTodo : (state, action) => {
                 console.log(action.payload);
                 const { id, text} = action.payload;
                 const todoToUpdate = state.todos.find((todo) => todo.id == id);
